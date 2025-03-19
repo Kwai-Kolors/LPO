@@ -1,0 +1,16 @@
+accelerate==1.1.1
+bitsandbytes==0.45.1
+diffusers==0.31.0
+matplotlib==3.9.0
+ml_collections==0.1.1
+mmengine==0.10.5
+pandas==2.2.3
+peft==0.13.2
+Pillow==10.2.0
+tqdm==4.67.0
+transformers==4.46.3
+wandb==0.18.7
+datasets==3.1.0
+ftfy==6.3.1
+timm==1.0.11
+fairscale==0.4.13
