@@ -67,7 +67,7 @@ pip install -e .
 
 #### 2. Download
 - Download the `pytorch_model.bin` from the `openai/clip-vit-large-patch14` [hugginface repository](https://huggingface.co/openai/clip-vit-large-patch14). Change the `clip_ckpt_path` in `lrm_15/trainer/conf/step_sd15.yaml` to its real storage path.
-- Download the file from [Google Drive,](https://drive.google.com/file/d/1baFGMntt6QxVqy8hzxQHfU9sCC-Eagq_/view?usp=drive_link) which contains multiple preference scores for images in Pick-a-Pic, and place it under the LRM folder.
+- Download the pre-computed score file from [Google Drive](https://drive.google.com/file/d/1baFGMntt6QxVqy8hzxQHfU9sCC-Eagq_/view?usp=drive_link), which contains multiple preference scores for images in Pick-a-Pic, and place it under the LRM folder.
 #### 3. Training
 
 - LRM-1.5
