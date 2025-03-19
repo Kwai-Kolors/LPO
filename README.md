@@ -5,12 +5,17 @@ This repository contains the official pytorch implementation of the paper “[Di
 <p align="center">
   <a href='https://arxiv.org/abs/2502.01051'>
   <img src='https://img.shields.io/badge/Arxiv-2502.01051-A42C25?style=flat&logo=arXiv&logoColor=A42C25'></a> 
+  <a href='https://huggingface.co/casiatao/LRM'>
+  <img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-yellow'></a>
+  <a href='https://huggingface.co/casiatao/LPO'>
+  <img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-yellow'></a>
   <a href='https://visitor-badge.laobi.icu/badge?page_id=Kwai-Kolors.LPO'>
   <img src="https://visitor-badge.laobi.icu/badge?page_id=Kwai-Kolors.LPO&left_color=gray&right_color=%2342b983"></a> 
 </p>
 
 ## 🎉 News
-* 2025.03.19 🔥 The source code is publicly available!
+* 2025.03.20 🔥 The pre-trained models are released!
+* 2025.03.20 🔥 The source code is publicly available!
 
 
 ## 📖 Introduction
@@ -96,7 +101,7 @@ pip install -r requirements.txt
 
 #### 2. Download 
 - Download the `pytorch_model.bin` from the `openai/clip-vit-large-patch14` [hugginface repository](https://huggingface.co/openai/clip-vit-large-patch14). Change the `clip_ckpt_path` in `lpo/lpo/preference_models/models/sd15_preference_model.py` to its real storage path. 
-- Download the latent reward models. Change the `ft_model_path` in the `lpo/configs` to real path of reward models.
+- Change the `ft_model_path` in the `lpo/configs` to real path of reward models. Our public reward models are available in [Hugging Face](https://huggingface.co/casiatao/LRM).
 #### 3. Training
 
 - Train SD1.5 using LRM-1.5
@@ -120,6 +125,9 @@ cd lpo
 accelerate launch --config_file accelerate_cfg/1m4g_fp16.yaml train_scripts/train_lpo_sdxl.py --config configs/lpo_sdxl_5ep_cfg75_8k_beta500_multiscale_wocfg_thresh45-6-sigma.py
 ```
 
+### Pre-trained Models
+- The pre-trained Latent Reward Models (LRM) are available in [Hugging Face](https://huggingface.co/casiatao/LRM).
+- The optimized diffusion models by the Latent Preference Optimization (LPO) method are available in [Hugging Face](https://huggingface.co/casiatao/LPO).
 
 
 ## Citation
