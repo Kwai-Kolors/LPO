@@ -5,7 +5,12 @@ This repository contains the official pytorch implementation of the paper “[Di
 <p align="center">
   <a href='https://arxiv.org/abs/2502.01051'>
   <img src='https://img.shields.io/badge/Arxiv-2502.01051-A42C25?style=flat&logo=arXiv&logoColor=A42C25'></a> 
+  <a href='https://visitor-badge.laobi.icu/badge?page_id=Kwai-Kolors.LPO'>
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=Kwai-Kolors.LPO&left_color=gray&right_color=%2342b983"></a> 
 </p>
+
+## 🎉 News
+* 2025.03.19 🔥 The source code is publicly available!
 
 
 ## 📖 Introduction
