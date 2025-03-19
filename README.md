@@ -14,22 +14,33 @@ This repository contains the official pytorch implementation of the paper “[Di
 
 
 ## 📖 Introduction
-
-<img src="readme.assets/image-20250201133330626.png" alt="image-20250201133330626" style="zoom: 25%;" />
+<p align="center">
+<img src="readme.assets/image-20250201133330626.png" alt="image-20250201133330626" style="width:60%; height:auto;" />
+</p>
 
 In this work, we analyze the challenges when pixel-level reward models are used in step-level preference optimization for diffusion models. Then we propose the Latent Reward Model (LRM) to utilize diffusion models for step-level reward modeling, based on the insights that diffusion models possess text-image alignment abilities and can perceive noisy latent images across different timesteps. We further introduce Latent Preference Optimization (LPO), a method that employs LRM for step-level preference optimization, operating entirely within the latent space.
+<p align="center">
+<img src="readme.assets/image-20250201133727877.png" alt="image-20250201133727877" style="width:60%; height:auto;" />
+</p>
 
-<img src="readme.assets/image-20250201133727877.png" alt="image-20250201133727877" style="zoom: 20%;" />
+<p align="center">
+<img src="readme.assets/image-20250201133546785.png" alt="image-20250201133546785" style="width:100%; height:auto;" />
+</p>
 
-![image-20250201133546785](readme.assets/image-20250201133546785.png)
 
-Extensive experiments demonstrate that LPO significantly improves the image quality of various diffusion models and consistently outperforms existing DPO and SPO methods across the general, aesthetic, and alignment preferences. Moreover, LPO exhibits remarkable training efficiency, achieving a speedup of 10-28$\times$ over Diffusion-DPO and 2.5-3.5$\times$ over SPO.
+Extensive experiments demonstrate that LPO significantly improves the image quality of various diffusion models and consistently outperforms existing DPO and SPO methods across the general, aesthetic, and alignment preferences. Moreover, LPO exhibits remarkable training efficiency, achieving a speedup of 10-28$\times$ over Diffusion-DPO and 2.5-3.5x over SPO.
+<p align="center">
+<img src="readme.assets/image-20250201202804820.png" alt="image-20250201202804820" style="width:50%; height:auto;" />
+</p>
 
-<img src="readme.assets/image-20250201202804820.png" alt="image-20250201202804820" style="zoom: 33%;" />
+<p align="center">
+<img src="readme.assets/image-20250201202846338.png" alt="image-20250201202846338" style="width:100%; height:auto;" />
+</p>
 
-![image-20250201202846338](readme.assets/image-20250201202846338.png)
+<p align="center">
+<img src="readme.assets/image-20250201203002853.png" alt="image-20250201203002853" style="width:100%; height:auto;" />
+</p>
 
-![image-20250201203002853](readme.assets/image-20250201203002853.png)
 
 
 
@@ -37,7 +48,7 @@ Extensive experiments demonstrate that LPO significantly improves the image qual
 
 ### LRM Training
 
-1. Create conda environments and install packages
+#### 1. Create conda environments and install packages
 
 ```bash
 conda create -n lrm python=3.8
@@ -49,9 +60,10 @@ cd ./lrm_15
 pip install -e .
 ```
 
-2. Download the `pytorch_model.bin` from the `openai/clip-vit-large-patch14` [hugginface repository](https://huggingface.co/openai/clip-vit-large-patch14). Change the `clip_ckpt_path` in `lrm_15/trainer/conf/step_sd15.yaml` to its real storage path.
-2. Download the file from [Google Drive,](https://drive.google.com/file/d/1baFGMntt6QxVqy8hzxQHfU9sCC-Eagq_/view?usp=drive_link) which contains multiple preference scores for images in Pick-a-Pic, and place it under the LRM folder.
-3. Training
+#### 2. Download
+- Download the `pytorch_model.bin` from the `openai/clip-vit-large-patch14` [hugginface repository](https://huggingface.co/openai/clip-vit-large-patch14). Change the `clip_ckpt_path` in `lrm_15/trainer/conf/step_sd15.yaml` to its real storage path.
+- Download the file from [Google Drive,](https://drive.google.com/file/d/1baFGMntt6QxVqy8hzxQHfU9sCC-Eagq_/view?usp=drive_link) which contains multiple preference scores for images in Pick-a-Pic, and place it under the LRM folder.
+#### 3. Training
 
 - LRM-1.5
 
@@ -71,7 +83,7 @@ bash train_lrm_xl.sh
 
 ### LPO Training
 
-1. Create conda environments and install packages
+#### 1. Create conda environments and install packages
 
 ```bash
 conda create -n lpo python=3.9
@@ -82,9 +94,10 @@ cd ./lpo
 pip install -r requirements.txt
 ```
 
-2. Download the `pytorch_model.bin` from the `openai/clip-vit-large-patch14` [hugginface repository](https://huggingface.co/openai/clip-vit-large-patch14). Change the `clip_ckpt_path` in `lpo/lpo/preference_models/models/sd15_preference_model.py` to its real storage path. 
-2. Download the latent reward models. Change the `ft_model_path` in the `lpo/configs` to real path of reward models.
-3. Training
+#### 2. Download 
+- Download the `pytorch_model.bin` from the `openai/clip-vit-large-patch14` [hugginface repository](https://huggingface.co/openai/clip-vit-large-patch14). Change the `clip_ckpt_path` in `lpo/lpo/preference_models/models/sd15_preference_model.py` to its real storage path. 
+- Download the latent reward models. Change the `ft_model_path` in the `lpo/configs` to real path of reward models.
+#### 3. Training
 
 - Train SD1.5 using LRM-1.5
 
