@@ -1,0 +1,57 @@
+defaults:
+  - step_sdxl_base_config
+  - _self_
+
+dataset: 
+  batch_size: 4
+  dataset_name: 'yuvalkirstain/pickapic_v1'
+  from_disk: False
+  constant_timestep: 1
+  variable_timestep: True
+  keep_only_with_pesudo_preference: True
+  filter_strategy: 2
+  compare_between_timestep: False
+  timestep_interval: 1
+  largest_timestep: 951
+
+optimizer:
+  lr: 1e-5 
+
+criterion:
+  loss_type: pair
+  batch_coeff: 1.0
+  aux_loss_coeff: 1.0
+
+lr_scheduler:
+  lr_warmup_steps: 1000
+
+model: 
+  pretrained_model_name_or_path: "stabilityai/stable-diffusion-xl-base-1.0"  
+  pretrained_vae_name_or_path: "madebyollin/sdxl-vae-fp16-fix"
+  logit_scale_init_value: 2.6592 
+  freeze_text_encoder: False
+  multi_scale: True
+  multi_scale_cfg: False
+  guidance_scale: 7.5
+  noise_offset: false
+  noise_offset_coeff: 0.05
+
+accelerator:
+  mixed_precision: BF16
+  project_name: reward_model
+  resume_from_checkpoint: False
+  metric_name: "accuracy"  # save best ckpt according to this metric
+  gradient_accumulation_steps: 1
+  max_steps: 8000
+  run_name: step_sdxl_variable-t_lr1e-5_step-8000_multiscale_cfg7.5_filter2_time951
+
+
+output_dir: logs/lrm/${accelerator.project_name}/${accelerator.run_name}
+
+hydra:
+  run:
+    dir: .
+
+debug:
+  activate: false
+  port: 5900  

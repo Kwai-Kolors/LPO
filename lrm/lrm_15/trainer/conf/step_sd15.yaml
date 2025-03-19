@@ -1,0 +1,56 @@
+defaults:
+  - step_sd_config
+  - _self_
+
+dataset: 
+  batch_size: 16
+  dataset_name: 'yuvalkirstain/pickapic_v1'
+  from_disk: False
+  constant_timestep: 1
+  variable_timestep: True
+  keep_only_with_pesudo_preference: True
+  filter_strategy: 2
+  compare_between_timestep: False
+  timestep_interval: 1
+  largest_timestep: 951
+
+optimizer:
+  lr: 1e-5 
+
+criterion:
+  loss_type: pair
+  batch_coeff: 1.0
+  aux_loss_coeff: 1.0
+
+lr_scheduler:
+  lr_warmup_steps: 500
+
+model: 
+  pretrained_model_name_or_path: "sd-legacy/stable-diffusion-v1-5"  
+  clip_ckpt_path: "openai/clip-vit-large-patch14/pytorch_model.bin"
+  logit_scale_init_value: 2.6592 
+  freeze_text_encoder: False
+  multi_scale: True
+  multi_scale_cfg: False
+  guidance_scale: 7.5
+
+
+accelerator:
+  mixed_precision: BF16
+  project_name: reward_model
+  resume_from_checkpoint: False
+  metric_name: "accuracy"  # save best ckpt according to this metric
+  gradient_accumulation_steps: 1
+  max_steps: 4000
+  run_name: step_sd15_variable-t_lr1e-5_step-4000_multiscale_cfg7.5_filter2_time951
+
+
+output_dir: logs/lrm/${accelerator.project_name}/${accelerator.run_name}
+
+hydra:
+  run:
+    dir: .
+
+debug:
+  activate: false
+  port: 5900  
