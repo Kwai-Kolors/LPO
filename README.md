@@ -1,6 +1,4 @@
-# LPO
-
-This repository contains the official pytorch implementation of the paper “[Diffusion Model as a Noise-Aware Latent Reward Model for Step-Level Preference Optimization](https://arxiv.org/abs/2502.01051)” paper.
+<h1 align="center"> Diffusion Model as a Noise-Aware Latent Reward Model for Step-Level Preference Optimization </h1>
 
 <p align="center">
   <a href='https://arxiv.org/abs/2502.01051'>
@@ -13,7 +11,9 @@ This repository contains the official pytorch implementation of the paper “[Di
   <img src="https://visitor-badge.laobi.icu/badge?page_id=Kwai-Kolors.LPO&left_color=gray&right_color=%2342b983"></a> 
 </p>
 
-
+<p align="center">
+<img src="imgs/vis.png" alt="vis" style="width:100%; height:auto;" />
+</p>
 
 ## 📝 News
 * [2025.03.20]: 🔥 The pre-trained models are released!
@@ -21,13 +21,15 @@ This repository contains the official pytorch implementation of the paper “[Di
 
 
 ## 📖 Introduction
+This repository contains the official pytorch implementation of the paper “[Diffusion Model as a Noise-Aware Latent Reward Model for Step-Level Preference Optimization](https://arxiv.org/abs/2502.01051)” paper.
+
 <p align="center">
-<img src="readme.assets/image-20250201133330626.png" alt="image-20250201133330626" style="width:60%; height:auto;" />
+<img src="imgs/intro.png" alt="intro" style="width:60%; height:auto;" />
 </p>
 
 In this work, we analyze the challenges when pixel-level reward models are used in step-level preference optimization for diffusion models. Then we propose the Latent Reward Model (LRM) to utilize diffusion models for step-level reward modeling, based on the insights that diffusion models possess text-image alignment abilities and can perceive noisy latent images across different timesteps. We further introduce Latent Preference Optimization (LPO), a method that employs LRM for step-level preference optimization, operating entirely within the latent space.
 
-Extensive experiments demonstrate that LPO significantly improves the image quality of various diffusion models and consistently outperforms existing DPO and SPO methods across the general, aesthetic, and alignment preferences. Moreover, LPO exhibits remarkable training efficiency, achieving a speedup of 10-28$\times$ over Diffusion-DPO and 2.5-3.5x over SPO.
+Extensive experiments demonstrate that LPO significantly improves the image quality of various diffusion models and consistently outperforms existing DPO and SPO methods across the general, aesthetic, and alignment preferences. Moreover, LPO exhibits remarkable training efficiency, achieving a speedup of 10-28&times; over Diffusion-DPO and 2.5-3.5&times; over SPO.
 
 
 ## 🛠️ Usage
@@ -37,9 +39,9 @@ git clone https://github.com/Kwai-Kolors/LPO
 cd LPO
 ```
 
-### LRM Training
+### 1. LRM Training
 
-#### 1. Environmental Setup
+#### 1.1 Environmental Setup
 
 ```bash
 conda create -n lrm python=3.8
@@ -51,10 +53,11 @@ cd ./lrm_15
 pip install -e .
 ```
 
-#### 2. Download Pre-trained Weights
-- Download the `pytorch_model.bin` from the `openai/clip-vit-large-patch14` [hugginface repository](https://huggingface.co/openai/clip-vit-large-patch14). Change the `clip_ckpt_path` in `lrm_15/trainer/conf/step_sd15.yaml` to its real storage path.
+#### 1.2 Pre-trained Weights Downloading
+- Download the `pytorch_model.bin` from the `openai/clip-vit-large-patch14` [Hugging Face repository](https://huggingface.co/openai/clip-vit-large-patch14). Change the `clip_ckpt_path` in `lrm_15/trainer/conf/step_sd15.yaml` to its real storage path.
 - Download the pre-computed score file from [Google Drive](https://drive.google.com/file/d/1baFGMntt6QxVqy8hzxQHfU9sCC-Eagq_/view?usp=drive_link), which contains multiple preference scores for images in Pick-a-Pic, and place it under the LRM folder.
-#### 3. Training
+  
+#### 1.3 Training
 
 - LRM-1.5
 
@@ -72,9 +75,9 @@ bash train_lrm_xl.sh
 
 
 
-### LPO Training
+### 2. LPO Training
 
-#### 1. Environmental Setup
+#### 2.1 Environmental Setup
 
 ```bash
 conda create -n lpo python=3.9
@@ -85,10 +88,11 @@ cd ./lpo
 pip install -r requirements.txt
 ```
 
-#### 2. Download Pre-trained Weights 
-- Download the `pytorch_model.bin` from the `openai/clip-vit-large-patch14` [hugginface repository](https://huggingface.co/openai/clip-vit-large-patch14). Change the `clip_ckpt_path` in `lpo/lpo/preference_models/models/sd15_preference_model.py` to its real storage path. 
+#### 2.2 Pre-trained Weights Downloading
+- Download the `pytorch_model.bin` from the `openai/clip-vit-large-patch14` [Hugging Face repository](https://huggingface.co/openai/clip-vit-large-patch14). Change the `clip_ckpt_path` in `lpo/lpo/preference_models/models/sd15_preference_model.py` to its real storage path. 
 - Change the `ft_model_path` in the `lpo/configs` to real path of reward models. Our public reward models are available in [Hugging Face](https://huggingface.co/casiatao/LRM).
-#### 3. Training
+  
+#### 2.3 Training
 
 - Train SD1.5 using LRM-1.5
 
@@ -111,7 +115,7 @@ cd lpo
 accelerate launch --config_file accelerate_cfg/1m4g_fp16.yaml train_scripts/train_lpo_sdxl.py --config configs/lpo_sdxl_5ep_cfg75_8k_beta500_multiscale_wocfg_thresh45-6-sigma.py
 ```
 
-### Pre-trained Models
+### 3. Pre-trained Models
 - The pre-trained Latent Reward Models (LRM) are available in [Hugging Face](https://huggingface.co/casiatao/LRM).
 - The optimized diffusion models by the Latent Preference Optimization (LPO) method are available in [Hugging Face](https://huggingface.co/casiatao/LPO).
 
