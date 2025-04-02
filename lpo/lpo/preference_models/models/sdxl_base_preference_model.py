@@ -269,9 +269,9 @@ class SDXLBasePreferenceModel(nn.Module):
                 # logger.info(f"Loading text_encoder_2 weights from {os.path.join(path, 'text_encoder_2')}")
                 
             # load others
-            state_dict = torch.load(os.path.join(path, "state_dict.pt"))
+            state_dict = torch.load(os.path.join(path, "state_dict.pt"), map_location="cpu")
             self.visual_projection.load_state_dict(state_dict['visual_projection'])
-            self.logit_scale.data = state_dict['logit_scale']      
+            self.logit_scale.data = state_dict['logit_scale'] if isinstance(state_dict['logit_scale'], torch.Tensor) else torch.tensor(state_dict['logit_scale'])      
             logger.info(f"Loading projection and logit_scale weights from {os.path.join(path, 'state_dict.pt')}")
         else:
             ckpt = torch.load(path)
