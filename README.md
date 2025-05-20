@@ -119,6 +119,20 @@ accelerate launch --config_file accelerate_cfg/1m4g_fp16.yaml train_scripts/trai
 - The pre-trained Latent Reward Models (LRM) are available in [Hugging Face](https://huggingface.co/casiatao/LRM).
 - The optimized diffusion models by the Latent Preference Optimization (LPO) method are available in [Hugging Face](https://huggingface.co/casiatao/LPO).
 
+  
+
+### 4. Evaluation
+
+- Running example:
+
+```bash
+cd evaluation
+python3 general_score_pap_val.py --model_name origin_sd15 --num_image_per_prompt 4 --sample_steps 20 --seed 42
+```
+
+You can add new load function for any models in  `evaluation/general_score_pap_val.py`, and then update the `model_dict`. Finally, you can evaluate the model by replacing the `model_name` in the above example.
+
+
 
 ## ⭐ Citation 
 If you find this repository helpful, please consider giving it a star ⭐ and citing:
@@ -135,4 +149,4 @@ If you find this repository helpful, please consider giving it a star ⭐ and ci
 
 ## 🤗 Acknowledgments
 
-This codebase is built upon the [PickScore](https://github.com/yuvalkirstain/PickScore) repository and the [SPO](https://github.com/RockeyCoss/SPO) repository. Thanks for their great work！
+This codebase is built upon the [PickScore](https://github.com/yuvalkirstain/PickScore) repository and the [SPO](https://github.com/RockeyCoss/SPO) repository. The evaluation code is also based on [HPSv2](https://github.com/tgxs002/HPSv2), [ImageReward](https://github.com/THUDM/ImageReward), and [Aesthetic Predictor](https://github.com/christophschuhmann/improved-aesthetic-predictor). Thanks for their great work！
