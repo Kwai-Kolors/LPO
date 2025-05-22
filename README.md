@@ -16,6 +16,8 @@
 </p>
 
 ## 📝 News
+* [2025.05.20]: 🔥 We have uploaded a new version of the paper at [arxiv](https://arxiv.org/abs/2502.01051), which incorporates more experimental results. These include applying LRM to a step-wise variant of GRPO, using LPO on the DiT-based SD3 with Flow Matching methods, and experiments conducted on the HPDv2 dataset. Feel free to check it.
+* [2025.05.20]: 🔥 The evaluation code is released!
 * [2025.03.20]: 🔥 The pre-trained models are released!
 * [2025.03.20]: 🔥 The source code is publicly available!
 
