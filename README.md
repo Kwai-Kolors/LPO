@@ -16,6 +16,7 @@
 </p>
 
 ## 📝 News
+* [2025.09.18]: 🔥 Congratulations! Our paper has been accepted by NeurIPS 2025.
 * [2025.05.20]: 🔥 We have uploaded a new version of the paper at [arxiv](https://arxiv.org/abs/2502.01051), which incorporates more experimental results. These include applying LRM to a step-wise variant of GRPO, using LPO on the DiT-based SD3 with Flow Matching methods, and experiments conducted on the HPDv2 dataset. Feel free to check it.
 * [2025.05.20]: 🔥 The evaluation code is released!
 * [2025.03.20]: 🔥 The pre-trained models are released!
@@ -23,7 +24,7 @@
 
 
 ## 📖 Introduction
-This repository contains the official pytorch implementation of the paper “[Diffusion Model as a Noise-Aware Latent Reward Model for Step-Level Preference Optimization](https://arxiv.org/abs/2502.01051)” paper.
+This repository contains the official PyTorch implementation of the paper “[Diffusion Model as a Noise-Aware Latent Reward Model for Step-Level Preference Optimization](https://arxiv.org/abs/2502.01051)” paper.
 
 <p align="center">
 <img src="imgs/intro.png" alt="intro" style="width:60%; height:auto;" />
