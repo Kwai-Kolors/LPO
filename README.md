@@ -141,8 +141,8 @@ You can add new load function for any models in  `evaluation/general_score_pap_v
 If you find this repository helpful, please consider giving it a star ⭐ and citing:
 ```bibtex
 @article{zhang2025diffusion,
-  title={Diffusion Model as a Noise-Aware Latent Reward Model for Step-Level Preference Optimization},
-  author={Zhang, Tao and Da, Cheng and Ding, Kun and Jin, Kun and Li, Yan and Gao, Tingting and Zhang, Di and Xiang, Shiming and Pan, Chunhong},
+  title={Diffusion model as a noise-aware latent reward model for step-level preference optimization},
+  author={Zhang, Tao and Da, Cheng and Ding, Kun and Yang, Huan and Jin, Kun and Li, Yan and Gao, Tingting and Zhang, Di and Xiang, Shiming and Pan, Chunhong},
   journal={arXiv preprint arXiv:2502.01051},
   year={2025}
 }
